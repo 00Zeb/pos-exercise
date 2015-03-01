@@ -22,6 +22,7 @@ public class PointOfSaleAppTest {
 	@Before
 	public void createApp() {
 		display = new Display();
+		@SuppressWarnings("serial")
 		Map<String,String> productLine = new HashMap<String, String>() {
 			{
 				put("12344", "$6.95");
