@@ -27,6 +27,7 @@ public class PointOfSaleAppTest {
 		Map<String,String> productLine = new HashMap<String, String>() {
 			{
 				put(EMPTY_BARCODE, EMPTY_BARCODE);
+				put(null, EMPTY_BARCODE);
 				put("12344", "$6.95");
 				put("12345", "$7.95");
 			}
