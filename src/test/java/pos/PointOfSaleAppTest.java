@@ -9,8 +9,8 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class PointOfSaleAppTest {
-
 	private static final String NOTHING = "";
+	private static final String SCANNING_ERROR = "Scanning error";
 	// Test list
 	// *. invalid ("") bar code, displays nothing ("")
 	// *. bar code ("12345") is found , displays correct price ("$7.95").
@@ -26,8 +26,8 @@ public class PointOfSaleAppTest {
 		@SuppressWarnings("serial")
 		Map<String,String> productLine = new HashMap<String, String>() {
 			{
-				put(NOTHING, NOTHING);
-				put(null, NOTHING);
+				put(NOTHING, SCANNING_ERROR);
+				put(null, SCANNING_ERROR);
 				put("12344", "$6.95");
 				put("12345", "$7.95");
 			}
@@ -38,13 +38,13 @@ public class PointOfSaleAppTest {
 	@Test
 	public void empty_barcode_displays_nothing() {
 		pointOfSaleApp.onBarcode(NOTHING);
-		assertEquals(NOTHING, display.getText());
+		assertEquals(SCANNING_ERROR, display.getText());
 	}
 
 	@Test
 	public void invalid_barcode_displays_nothing() {
 		pointOfSaleApp.onBarcode(null);
-		assertEquals(NOTHING, display.getText());
+		assertEquals(SCANNING_ERROR, display.getText());
 	}
 
 	@Test
@@ -58,6 +58,7 @@ public class PointOfSaleAppTest {
 	@Test
 	public void barcode_not_found_displays_price_not_found() {
 		pointOfSaleApp.onBarcode("12346");
-		assertEquals("N/A", display.getText());
+		//Smell: Barcode not found is hidden in the production code.
+		assertEquals("Barcode not found", display.getText());
 	}
 }

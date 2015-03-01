@@ -12,7 +12,7 @@ public class PointOfSaleApp {
 	}
 
 	public void onBarcode(String barcode) {
-		String price = productLine.getOrDefault(barcode, "N/A");
+		String price = productLine.getOrDefault(barcode, "Barcode not found");
 		display.setText(price);
 	}
 }
