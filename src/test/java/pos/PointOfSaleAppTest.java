@@ -38,26 +38,26 @@ public class PointOfSaleAppTest {
 	@Test
 	public void empty_barcode_displays_nothing() {
 		pointOfSaleApp.onBarcode(NOTHING);
-		assertEquals(NOTHING, display.getLastMessage());
+		assertEquals(NOTHING, display.getText());
 	}
 
 	@Test
 	public void invalid_barcode_displays_nothing() {
 		pointOfSaleApp.onBarcode(null);
-		assertEquals(NOTHING, display.getLastMessage());
+		assertEquals(NOTHING, display.getText());
 	}
 
 	@Test
 	public void finds_barcode_then_displays_price() {
 		pointOfSaleApp.onBarcode("12345");
-		assertEquals("$7.95", display.getLastMessage());
+		assertEquals("$7.95", display.getText());
 		pointOfSaleApp.onBarcode("12344");
-		assertEquals("$6.95", display.getLastMessage());
+		assertEquals("$6.95", display.getText());
 	}
 	
 	@Test
 	public void barcode_not_found_displays_price_not_found() {
 		pointOfSaleApp.onBarcode("12346");
-		assertEquals("N/A", display.getLastMessage());
+		assertEquals("N/A", display.getText());
 	}
 }

@@ -13,6 +13,6 @@ public class PointOfSaleApp {
 
 	public void onBarcode(String barcode) {
 		String price = productLine.getOrDefault(barcode, "N/A");
-		display.sendMessage(price);
+		display.setText(price);
 	}
 }
