@@ -19,4 +19,12 @@ public class PointOfSaleAppTest {
 		pointOfSaleApp.onBarcode("");
 		assertEquals("", display.getLastMessage());
 	}
+	
+	@Test
+	public void finds_barcode_then_displays_price() {
+		Display display = new Display();
+		PointOfSaleApp pointOfSaleApp = new PointOfSaleApp(display);
+		pointOfSaleApp.onBarcode("12345");
+		assertEquals("$7.95", display.getLastMessage());
+	}
 }
