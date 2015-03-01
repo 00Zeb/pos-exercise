@@ -10,7 +10,7 @@ import org.junit.Test;
 
 public class PointOfSaleAppTest {
 
-	private static final String EMPTY_BARCODE = "";
+	private static final String NOTHING = "";
 	// Test list
 	// *. invalid ("") bar code, displays nothing ("")
 	// *. bar code ("12345") is found , displays correct price ("$7.95").
@@ -26,8 +26,8 @@ public class PointOfSaleAppTest {
 		@SuppressWarnings("serial")
 		Map<String,String> productLine = new HashMap<String, String>() {
 			{
-				put(EMPTY_BARCODE, EMPTY_BARCODE);
-				put(null, EMPTY_BARCODE);
+				put(NOTHING, NOTHING);
+				put(null, NOTHING);
 				put("12344", "$6.95");
 				put("12345", "$7.95");
 			}
@@ -37,14 +37,14 @@ public class PointOfSaleAppTest {
 
 	@Test
 	public void empty_barcode_displays_nothing() {
-		pointOfSaleApp.onBarcode(EMPTY_BARCODE);
-		assertEquals(EMPTY_BARCODE, display.getLastMessage());
+		pointOfSaleApp.onBarcode(NOTHING);
+		assertEquals(NOTHING, display.getLastMessage());
 	}
 
 	@Test
 	public void invalid_barcode_displays_nothing() {
 		pointOfSaleApp.onBarcode(null);
-		assertEquals(EMPTY_BARCODE, display.getLastMessage());
+		assertEquals(NOTHING, display.getLastMessage());
 	}
 
 	@Test
