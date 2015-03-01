@@ -3,8 +3,7 @@ package pos;
 import java.util.Map;
 
 public class PointOfSaleApp {
-
-	private Display display;
+	private final Display display;
 	private final Map<String, String> productLine;
 
 	public PointOfSaleApp(Display display, Map<String, String> productLine) {
@@ -13,11 +12,7 @@ public class PointOfSaleApp {
 	}
 
 	public void onBarcode(String barcode) {
-		String price = "N/A";
-		if(barcode.isEmpty())
-			price = "";
-		if(productLine.containsKey(barcode)) 
-			price = productLine.get(barcode);
+		String price = productLine.getOrDefault(barcode, "N/A");
 		display.sendMessage(price);
 	}
 }
