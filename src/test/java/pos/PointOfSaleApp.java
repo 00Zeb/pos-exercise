@@ -1,10 +1,12 @@
 package pos;
 
+import java.util.Map;
+
 public class PointOfSaleApp {
 
 	private Display display;
 
-	public PointOfSaleApp(Display display) {
+	public PointOfSaleApp(Display display, Map<String, String> productLine) {
 		this.display = display;
 	}
 
