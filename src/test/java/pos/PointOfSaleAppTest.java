@@ -9,9 +9,9 @@ public class PointOfSaleAppTest {
 
 	// Test list
 	// *. invalid ("") bar code, displays nothing ("")
-	// *. bar code ("1234") is found , displays correct price ("$12.34"
+	// *. bar code ("12345") is found , displays correct price ("$7.95").
+	// *. bar code ("9999") not found, displays price not found ("NOT FOUND).
 	// *. invalid (null) bar code, displays nothing ("")
-	// *. bar code ("9999") not found, displays price not found ("NOT FOUND)
 
 	private Display display;
 	private PointOfSaleApp pointOfSaleApp;
