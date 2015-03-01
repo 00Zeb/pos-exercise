@@ -2,13 +2,13 @@ package pos;
 
 public class PointOfSaleApp {
 
+	private Display display;
+
 	public PointOfSaleApp(Display display) {
-		// TODO Auto-generated constructor stub
+		this.display = display;
 	}
 
-	public void onBarcode(String string) {
-		// TODO Auto-generated method stub
-		
+	public void onBarcode(String barcode) {
+		display.sendMessage(barcode);
 	}
-
 }
