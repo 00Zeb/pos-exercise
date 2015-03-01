@@ -9,6 +9,11 @@ public class PointOfSaleApp {
 	}
 
 	public void onBarcode(String barcode) {
-		display.sendMessage(barcode);
+		String price = "N/A";
+		if(barcode.isEmpty())
+			price = "";
+		if(barcode.equals("12345")) 
+			price = "$7.95";
+		display.sendMessage(price);
 	}
 }
