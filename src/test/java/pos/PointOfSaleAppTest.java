@@ -12,6 +12,7 @@ public class PointOfSaleAppTest {
 	private static final String MISSING_BARCODE_MESSAGE = "Scanning error";
 	private static final String BARCODE_1 = "12345";
 	private static final String BARCODE_2 = "12344";
+	private static final String EMPTY_BARCODE = "";
 	private Display display;
 	private PointOfSaleApp pointOfSaleApp;
 
@@ -38,6 +39,12 @@ public class PointOfSaleAppTest {
 	public void empty_barcode_displays_nothing() {
 		pointOfSaleApp.onBarcode("");
 		assertEquals("", display.getLastMessage());
+	}
+
+	@Test
+	public void invalid_barcode_displays_nothing() {
+		pointOfSaleApp.onBarcode(null);
+		assertEquals(EMPTY_BARCODE, display.getLastMessage());
 	}
 
 	@Test
