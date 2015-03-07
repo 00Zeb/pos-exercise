@@ -40,27 +40,27 @@ public class PointOfSaleAppTest {
 	@Test
 	public void empty_barcode_displays_nothing() {
 		pointOfSaleApp.onBarcode(EMPTY_BARCODE);
-		assertEquals(READING_ERROR, display.getLastMessage());
+		assertEquals(READING_ERROR, display.getText());
 	}
 
 	@Test
 	public void invalid_barcode_displays_nothing() {
 		pointOfSaleApp.onBarcode(null);
-		assertEquals(READING_ERROR, display.getLastMessage());
+		assertEquals(READING_ERROR, display.getText());
 	}
 
 	@Test
 	public void finds_barcode_then_displays_price() {
 		pointOfSaleApp.onBarcode(BARCODE_1);
-		assertEquals("$7.95", display.getLastMessage());
+		assertEquals("$7.95", display.getText());
 		pointOfSaleApp.onBarcode(BARCODE_2);
-		assertEquals("$6.95", display.getLastMessage());
+		assertEquals("$6.95", display.getText());
 	}
 
 	@Test
 	public void barcode_not_found_displays_price_not_found() {
 		String missingBarcode = "12346";
 		pointOfSaleApp.onBarcode(missingBarcode);
-		assertEquals(MISSING_BARCODE_MESSAGE + " " + missingBarcode, display.getLastMessage());
+		assertEquals(MISSING_BARCODE_MESSAGE + " " + missingBarcode, display.getText());
 	}
 }

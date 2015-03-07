@@ -1,13 +1,13 @@
 package pos;
 
 public class Display {
-	private String lastMessage;
+	private String text;
 
-	public String getLastMessage() {
-		return lastMessage;
+	public String getText() {
+		return text;
 	}
 
-	public void sendMessage(String barcode) {
-		this.lastMessage =barcode;
+	public void setText(String text) {
+		this.text = text;
 	}
 }
