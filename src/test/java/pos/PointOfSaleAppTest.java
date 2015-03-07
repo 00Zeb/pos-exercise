@@ -11,6 +11,7 @@ public class PointOfSaleAppTest {
 
 	private static final String MISSING_BARCODE_MESSAGE = "Scanning error";
 	private static final String BARCODE_1 = "12345";
+	private static final String BARCODE_2 = "12344";
 	private Display display;
 	private PointOfSaleApp pointOfSaleApp;
 
@@ -28,6 +29,7 @@ public class PointOfSaleAppTest {
 			{
 				put("", "");
 				put(BARCODE_1, "$7.95");
+				put(BARCODE_2, "$6.95");
 			}
 		}, MISSING_BARCODE_MESSAGE);
 	}
@@ -42,7 +44,7 @@ public class PointOfSaleAppTest {
 	public void finds_barcode_then_displays_price() {
 		pointOfSaleApp.onBarcode(BARCODE_1);
 		assertEquals("$7.95", display.getLastMessage());
-		pointOfSaleApp.onBarcode("12344");
+		pointOfSaleApp.onBarcode(BARCODE_2);
 		assertEquals("$6.95", display.getLastMessage());
 	}
 
