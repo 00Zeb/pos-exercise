@@ -28,7 +28,7 @@ public class PointOfSaleAppTest {
 				put("", "");
 				put(BARCODE_1, "$7.95");
 			}
-		});
+		}, "N/A");
 	}
 
 	@Test
