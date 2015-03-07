@@ -12,6 +12,7 @@ public class PointOfSaleAppTest {
 	private static final String MISSING_BARCODE_MESSAGE = "Missing barcode";
 	private static final String BARCODE_1 = "12345";
 	private static final String BARCODE_2 = "12344";
+	private static final String READING_ERROR = "Scanning error";
 	private static final String EMPTY_BARCODE = "";
 	private Display display;
 	private PointOfSaleApp pointOfSaleApp;
@@ -28,8 +29,8 @@ public class PointOfSaleAppTest {
 		display = new Display();
 		pointOfSaleApp = new PointOfSaleApp(display, new HashMap<String, String>() {
 			{
-				put("", "");
-				put(null, "");
+				put(EMPTY_BARCODE, READING_ERROR);
+				put(null, READING_ERROR);
 				put(BARCODE_1, "$7.95");
 				put(BARCODE_2, "$6.95");
 			}
@@ -38,14 +39,14 @@ public class PointOfSaleAppTest {
 
 	@Test
 	public void empty_barcode_displays_nothing() {
-		pointOfSaleApp.onBarcode("");
-		assertEquals("", display.getLastMessage());
+		pointOfSaleApp.onBarcode(EMPTY_BARCODE);
+		assertEquals(READING_ERROR, display.getLastMessage());
 	}
 
 	@Test
 	public void invalid_barcode_displays_nothing() {
 		pointOfSaleApp.onBarcode(null);
-		assertEquals(EMPTY_BARCODE, display.getLastMessage());
+		assertEquals(READING_ERROR, display.getLastMessage());
 	}
 
 	@Test
