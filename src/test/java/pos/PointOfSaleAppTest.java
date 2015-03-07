@@ -29,6 +29,7 @@ public class PointOfSaleAppTest {
 		pointOfSaleApp = new PointOfSaleApp(display, new HashMap<String, String>() {
 			{
 				put("", "");
+				put(null, "");
 				put(BARCODE_1, "$7.95");
 				put(BARCODE_2, "$6.95");
 			}
