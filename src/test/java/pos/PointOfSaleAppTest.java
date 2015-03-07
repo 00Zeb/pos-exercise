@@ -9,6 +9,7 @@ import org.junit.Test;
 
 public class PointOfSaleAppTest {
 
+	private static final String BARCODE_1 = "12345";
 	private Display display;
 	private PointOfSaleApp pointOfSaleApp;
 
@@ -24,7 +25,7 @@ public class PointOfSaleAppTest {
 		display = new Display();
 		pointOfSaleApp = new PointOfSaleApp(display, new HashMap<String, String>() {
 			{
-				put("12345", "$7.95");
+				put(BARCODE_1, "$7.95");
 			}
 		});
 	}
@@ -37,7 +38,7 @@ public class PointOfSaleAppTest {
 
 	@Test
 	public void finds_barcode_then_displays_price() {
-		pointOfSaleApp.onBarcode("12345");
+		pointOfSaleApp.onBarcode(BARCODE_1);
 		assertEquals("$7.95", display.getLastMessage());
 	}
 }
