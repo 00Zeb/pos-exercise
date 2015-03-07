@@ -9,7 +9,7 @@ import org.junit.Test;
 
 public class PointOfSaleAppTest {
 
-	private static final String MISSING_BARCODE_MESSAGE = "Scanning error";
+	private static final String MISSING_BARCODE_MESSAGE = "Missing barcode";
 	private static final String BARCODE_1 = "12345";
 	private static final String BARCODE_2 = "12344";
 	private static final String EMPTY_BARCODE = "";
@@ -60,6 +60,6 @@ public class PointOfSaleAppTest {
 	public void barcode_not_found_displays_price_not_found() {
 		String missingBarcode = "12346";
 		pointOfSaleApp.onBarcode(missingBarcode);
-		assertEquals(MISSING_BARCODE_MESSAGE, display.getLastMessage());
+		assertEquals(MISSING_BARCODE_MESSAGE + " " + missingBarcode, display.getLastMessage());
 	}
 }

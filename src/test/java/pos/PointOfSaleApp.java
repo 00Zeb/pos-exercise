@@ -15,6 +15,6 @@ public class PointOfSaleApp {
 
 	public void onBarcode(String barcode) {
 		
-		display.sendMessage(productLine.getOrDefault(barcode, missingBarcodeMessage));
+		display.sendMessage(productLine.getOrDefault(barcode, missingBarcodeMessage + " " + barcode));
 	}
 }
