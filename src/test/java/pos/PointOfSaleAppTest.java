@@ -2,6 +2,8 @@ package pos;
 
 import static org.junit.Assert.assertEquals;
 
+import java.util.HashMap;
+
 import org.junit.Test;
 
 public class PointOfSaleAppTest {
@@ -15,7 +17,12 @@ public class PointOfSaleAppTest {
 	@Test
 	public void empty_barcode_displays_nothing() {
 		Display display = new Display();
-		PointOfSaleApp pointOfSaleApp = new PointOfSaleApp(display);
+		@SuppressWarnings("serial")
+		PointOfSaleApp pointOfSaleApp = new PointOfSaleApp(display, new HashMap<String, String>() {
+			{
+				put("12345", "$7.95");
+			}
+		});
 		pointOfSaleApp.onBarcode("");
 		assertEquals("", display.getLastMessage());
 	}
@@ -23,7 +30,12 @@ public class PointOfSaleAppTest {
 	@Test
 	public void finds_barcode_then_displays_price() {
 		Display display = new Display();
-		PointOfSaleApp pointOfSaleApp = new PointOfSaleApp(display);
+		@SuppressWarnings("serial")
+		PointOfSaleApp pointOfSaleApp = new PointOfSaleApp(display, new HashMap<String, String>() {
+			{
+				put("12345", "$7.95");
+			}
+		});
 		pointOfSaleApp.onBarcode("12345");
 		assertEquals("$7.95", display.getLastMessage());
 	}
