@@ -9,7 +9,7 @@ import org.junit.Test;
 
 public class PointOfSaleAppTest {
 
-	private static final String MISSING_BARCODE_MESSAGE = "N/A";
+	private static final String MISSING_BARCODE_MESSAGE = "Scanning error";
 	private static final String BARCODE_1 = "12345";
 	private Display display;
 	private PointOfSaleApp pointOfSaleApp;
