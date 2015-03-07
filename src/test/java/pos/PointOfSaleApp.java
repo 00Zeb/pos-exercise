@@ -1,5 +1,8 @@
 package pos;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class PointOfSaleApp {
 
 	private Display display;
@@ -9,9 +12,12 @@ public class PointOfSaleApp {
 	}
 
 	public void onBarcode(String barcode) {
-		String price = "";
-		if(barcode.equals("12345"))
-			price = "$7.95";
-		display.sendMessage(price);
+		@SuppressWarnings("serial")
+		Map<String, String> productLine = new HashMap<String, String>() {
+			{
+				put("12345", "$7.95");
+			}
+		};
+		display.sendMessage(productLine.getOrDefault(barcode, ""));
 	}
 }
