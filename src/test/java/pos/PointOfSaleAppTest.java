@@ -41,4 +41,11 @@ public class PointOfSaleAppTest {
 		pointOfSaleApp.onBarcode(BARCODE_1);
 		assertEquals("$7.95", display.getLastMessage());
 	}
+
+	@Test
+	public void barcode_not_found_displays_price_not_found() {
+		String missingBarcode = "12346";
+		pointOfSaleApp.onBarcode(missingBarcode);
+		assertEquals("N/A", display.getLastMessage());
+	}
 }
